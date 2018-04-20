@@ -1,0 +1,11 @@
+# Files created by Python
+__pycache__
+*.pyc
+
+# Backup files
+*.swp
+*~
+.DS_Store
+
+# The database file(s)
+*.sqlite3
