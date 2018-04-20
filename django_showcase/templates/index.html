@@ -1,5 +1,16 @@
 {% extends 'base.html' %}
 
+{% block extrahead %}
+{% endblock %}
+
 {% block content %}
-<p>Hello, world!</p>
+<div class="jumbotron">
+  <h1 class="display-4">Hello, world!</h1>
+  <p class="lead">This site showcases many of web development practices we use
+  at Haverford College Digital Scholarship.</p>
+  <hr class="my-4">
+  <p>The site runs on the <a href="https://djangoproject.com">Django web framework</a>
+  with Python.</p>
+  <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+</div>
 {% endblock %}

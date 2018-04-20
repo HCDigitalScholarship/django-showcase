@@ -1,4 +1,6 @@
-<!-- This is the base template for the Django showcase site. -->
+<!-- This is the base template for the Django showcase site. It contains all
+the HTML boilerplate, plus the site's header so you don't have to rewrite it
+on every page. -->
 
 
 <html lang="en">
@@ -11,10 +13,22 @@
     <!-- Bootstrap 4.1 - a CSS framework -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
 
+    <!-- This block is for extra CSS and JS that other templates might use.
+         See index.html for an example. -->
     {% block extrahead %}
     {% endblock %}
   </head>
   <body>
+    <nav class="navbar navbar-expand navbar-dark bg-dark">
+      <div class="collapse navbar-collapse">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="{% url 'index' %}">Home <span class="sr-only">(current)</span></a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
     <div class="container">
     {% block content %}{% endblock %}
     </div>
