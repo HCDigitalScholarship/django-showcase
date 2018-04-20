@@ -1,6 +1,11 @@
 {% extends 'base.html' %}
 
+<!-- This is necessary to be able to use the static template tag below. -->
+{% load static %}
+
+
 {% block extrahead %}
+<link rel="stylesheet" href="{% static 'css/index.css' %}">
 {% endblock %}
 
 {% block content %}
