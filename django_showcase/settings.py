@@ -72,7 +72,11 @@ ROOT_URLCONF = 'django_showcase.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            # This is where we keep templates that are not associated with a
+            # specific app.
+            os.path.join(BASE_DIR, 'django_showcase', 'templates'),
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
