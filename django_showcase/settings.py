@@ -8,6 +8,22 @@ https://docs.djangoproject.com/en/2.0/topics/settings/
 
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.0/ref/settings/
+
+
+NOTE: In a real project some of these settings (SECRET_KEY, ALLOWED_HOSTS,
+DEBUG, the database settings, and possibly others) would be kept in a separate
+settings_secret.py module, that would not be tracked by Git. This is for two
+reasons:
+
+    1. We don't want our site secrets (the SECRET_KEY and database password)
+    to be publicly viewable on GitHub.
+
+    2. We may want some of these settings (like DEBUG and ALLOWED_HOSTS) to
+    differ between the development and live servers. If the file were tracked
+    by Git, it would have be identical on both servers.
+
+For ease of deployment, this project forgoes settings_secret.py, but make sure
+to use it on any real projects that you develop!
 """
 
 import os
@@ -20,20 +36,18 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-# On a real project, we would keep this in a separate settings_secret.py
-# module that would not be tracked by version control, so that we wouldn't
-# accidentally leak it to the public on GitHub.
 SECRET_KEY = 'c85oy%937bx+!2r51(m0ah^l5t1_+@94#rtvzgy37i&5fm7dt)'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
 ALLOWED_HOSTS = []
 
 
-# Application definition
-
 INSTALLED_APPS = [
+    'dataviz.apps.DatavizConfig',
+    'transcribe.apps.TranscribeConfig',
+    # These apps are installed by default by Django. You probably won't need
+    # to change any of the lines below.
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -43,6 +57,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    # These are some more Django defaults that can be safely left alone.
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -108,7 +123,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/New_York'
 
 USE_I18N = True
 
