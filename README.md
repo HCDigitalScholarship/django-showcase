@@ -1,15 +1,22 @@
 # IDEAS FOR MOVING FORWARD (feel free to add to this)
-I think we should frame the tutorial (I want this to be a tutorial) as a list of requests from some faculty member. The first thing that can happen is an update to a csv, in the form of existing data being updated, new rows being added, and a new column being added. This will have them:
+I think we should frame the tutorial (I want this to be a tutorial) as a list of requests from some faculty member.
+
+## Request 1: The csv has been updated, update the database
+The first thing that can happen is an update to a csv, in the form of existing data being updated, new rows being added, and a new column being added. This will have them:
 
   1. Edit the models to conform with the new field
   2. Create an importer (I like to do this as a manage.py command, but idk if that is best)
-  
+ 
+
+## Request 2: The database has been updated, add a visualization
 The next request could be to display the new data in a visualization. We can point them to a d3 gallery (do we use d3?) or something specific, like [this interactive bar chart](http://bl.ocks.org/Caged/6476579). We could also make it so the data needs to be processed a little in python giving them the opportunity to work more in views. So, this has them:
 
   1. Make edits to a view, to process/pass data
   2. Add something to a template, and integrate javascript in that
   3. Work with some random code from the internet (which can be a challenge)
 
+
+## Request 3: Add a totally new page to the site
 Next, we can have them add a totally new page to the site. I'm not sure what it will have on it, maybe just a complete list of something from a model? This will have them:
   1. Create a template from scratch
   2. Add a link to the navbar
@@ -17,8 +24,10 @@ Next, we can have them add a totally new page to the site. I'm not sure what it 
   4. Add a view, and get data from the database to base to the template
   5. Dynamically display data in a template
 
-We can then ask them to move the navbar into its own file, which will show them how django blocks work.
+## Non-Request task
+Often, you may notice something wrong with a project, or just something that can be improved. Personally, I like it when the navbar is in its own file, it makes it nice and easy to find. We can then ask them to move the navbar into its own file, which will show them how django blocks work. This also encourages them to fix problems as they see them, which I think is generally a good idea! We could also intentionally have an error a little more significant than this, as long as we comment big that it is done poorly.
 
+## End thoughts
 I think this is all I have for now, it might also be good to have them edit some javascript and css. We will also need to include what to do with git, maybe have them make a new branch or even a fork of the project. I think that we shouldn't give them too much instructions on how to do these things. I think my ideal set of instructions is pretty close to what I have written up here: it basically just requests something to be done and loosely tells them where and what needs to be done for that task. I certainly don't want it to be a step-by-step guide, those are very ineffective. By telling them where they need to do the thing, they can look at something we already have there which provides a framework for them to complete the request based on.
 
 # Django showcase for Haverford Digital Scholarship
