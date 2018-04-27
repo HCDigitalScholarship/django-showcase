@@ -46,6 +46,13 @@ var fileid = "{{ object.slug }}";
         {% endif %}
       </div>
       <div class="tab-pane" id="transcribe" role="tabpanel" aria-labelledby="transcribe-tab">
+        <form method="post" action="">
+          {% csrf_token %}
+          <table>
+            {{ form.as_table }}
+          </table>
+          <input type="submit" value="Submit">
+        </form>
       </div>
     </div>
   </div>
