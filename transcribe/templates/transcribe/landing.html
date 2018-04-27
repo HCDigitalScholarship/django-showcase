@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %}Texts{% endblock %}
+
+{% block content %}
+<h1>Available Texts</h1>
+<ul>
+{% for text in object_list %}
+<li><a href="{{ text.get_absolute_url }}">{{ text.title }}</a></li>
+{% endfor %}
+</ul>
+{% endblock %}

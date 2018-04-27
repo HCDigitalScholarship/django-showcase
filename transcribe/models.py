@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils.text import slugify
+from django.urls import reverse
 
 
 class Text(models.Model):
@@ -14,6 +15,9 @@ class Text(models.Model):
         # the document.
         self.slug = slugify(self.title)
         super().save(*args, **kwargs)
+
+    def get_absolute_url(self):
+        return reverse('transcribe:text_detail', args=[self.slug])
 
     def __str__(self):
         return self.title
