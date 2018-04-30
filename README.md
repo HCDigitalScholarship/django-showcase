@@ -44,7 +44,7 @@ git clone https://github.com/HCDigitalScholarship/django-showcase.git
 
 Make sure you have Django installed. #TODO we might want to talk about setting up a virtualenv.
 
-To run the site, navigate into the first django-shwocase folder (the one with manage.py) and run 
+To run the site, navigate into the first django-showcase folder (the one with manage.py) and run 
 ```
 python3 manage.py runserver 8000
 ```
