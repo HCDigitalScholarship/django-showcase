@@ -21,3 +21,17 @@ class Text(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class PendingTranscription(models.Model):
+    """A model for transcriptions that have been submitted but not yet approved."""
+    transcription = models.TextField()
+    author = models.CharField(max_length=50, blank=True)
+    uploaded = models.DateTimeField(auto_now_add=True)
+    doc = models.ForeignKey(Text, on_delete=models.CASCADE)
+
+    def __str__(self):
+        if self.author:
+            return 'Pending Transcription of {0.doc.title} by {0.author}'.format(self)
+        else:
+            return 'Pending Transcription of {0.doc.title}'.format(self)

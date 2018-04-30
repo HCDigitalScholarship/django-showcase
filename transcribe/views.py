@@ -1,30 +1,26 @@
-from django.views.generic import DetailView, ListView
+import html
+from django.views.generic import ListView
+from django.shortcuts import render, get_object_or_404
 
 from .models import Text
 from .forms import TranscribeForm
 
 
-class TextView(DetailView):
-    model = Text
-    template_name = 'transcribe/text_detail.html'
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['form'] = TranscribeForm
-        return context
-
-    def post(self, request, *args, **kwargs):
+def text_detail_view(request, slug):
+    mytext = get_object_or_404(Text, slug=slug)
+    if request.method == 'POST':
         form = TranscribeForm(request.POST)
-        # Courtesy of https://stackoverflow.com/questions/32497740/
         if form.is_valid():
-            self.object = self.get_object()
-            context = self.get_context_data()
-            return self.render_to_response(context=context)
-        else:
-            self.object = self.get_object()
-            context = self.get_context_data()
-            context['form'] = form
-            return self.render_to_response(context=context)
+            # Replace newlines with <br> tags, and escape all HTML tags.
+            clean_text = '<br>'.join(html.escape(form.cleaned_data['text']).splitlines())
+            clean_author = html.escape(form.cleaned_data['name'])
+            mytext.pendingtranscription_set.create(transcription=clean_text, author=clean_author)
+            # Create the pending transcription object.
+        # TODO: Handle invalid case.
+    else:
+        form = TranscribeForm()
+    context = {'object': mytext, 'form': form}
+    return render(request, 'transcribe/text_detail.html', context)
 
 
 class LandingView(ListView):

@@ -7,5 +7,5 @@ app_name = 'transcribe'
 
 urlpatterns = [
     path('', views.LandingView.as_view(), name='landing'),
-    path('<slug>/', views.TextView.as_view(), name='text_detail'),
+    path('<slug>/', views.text_detail_view, name='text_detail'),
 ]
