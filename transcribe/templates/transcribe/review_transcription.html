@@ -1,0 +1,44 @@
+{% extends 'admin/base_site.html' %}
+
+{% load staticfiles %}
+
+{% block title %}Review Transcription {{ block.super }}{% endblock %}
+
+{% block extrastyle %}
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/openseadragon/2.3.1/openseadragon.min.js"></script>
+
+<script>
+var fileid = "{{ object.doc.slug }}";
+</script>
+
+<script src="{% static 'transcribe/js/load_osd.js' %}"></script>
+<link rel="stylesheet" href="{% static 'transcribe/css/review_transcription.css' %}">
+{% endblock %}
+
+{% block content %}
+<div id="content-main">
+  <h1>Review transcription of <a href="{{ object.doc.get_absolute_url }}">{{ object.doc.title }}</a></h1>
+  <div class="block40">
+    <h2>Image</h2>
+  </div>
+  <div class="block40">
+    <h2>Transcription</h2>
+  </div>
+  <br>
+  <div id="openseadragon" class="inline-div">
+    <div id="dropdown-placeholder"></div>
+  </div>
+  <div class="inline-div">
+    {% autoescape off %}
+    {{ diff_table }}
+    {% endautoescape %}
+  </div>
+  <form method="post" action="">
+    {% csrf_token %}
+    <input type="submit" name="submitbutton" value="Approve" />
+    or
+    <input type="submit" name="deletebutton" value="Delete" id="delete-button" />
+  </form>
+</div>
+{% endblock %}

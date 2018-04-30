@@ -14,13 +14,21 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
+from django.contrib.admin.views.decorators import staff_member_required
 from django.urls import path, include
 
 from . import views
+from transcribe import views as transcribe_views
 
 
 urlpatterns = [
     path('texts/', include('transcribe.urls')),
     path('', views.index, name='index'),
+    path('admin/review_transcriptions/', 
+        staff_member_required(transcribe_views.ReviewTranscriptionList.as_view()),
+        name='admin_review_transcription_list'),
+    path('admin/review_transcriptions/<pk>/', 
+        staff_member_required(transcribe_views.review_transcription),
+        name='admin_review_transcription'),
     path('admin/', admin.site.urls),
 ]
