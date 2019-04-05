@@ -1,3 +1,7 @@
+# NOTE: This repository is deprecated.
+
+Please see [django-showcase-2](https://github.com/HCDigitalScholarship/django-showcase-2) for a more up-to-date picture of the Django best practies at Digital Scholarship.
+
 # IDEAS FOR MOVING FORWARD (feel free to add to this)
 I think we should frame the tutorial (I want this to be a tutorial) as a list of requests from some faculty member.
 
